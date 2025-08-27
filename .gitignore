@@ -1,0 +1,29 @@
+# Exclude Xcode-generated files and user-specific data
+.DS_Store
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Swift Package Manager files
+.swiftpm/
+
+# Build and build-related files
+/build/
+.xcworkspace/
+DerivedData/
+
+# Git and editor files
+.gitkeep
+
+# Other Xcode-specific files
+*.xcuserdatad
+*.xcassets/
+*.xccheckout
+*.xccheckout.xcworkspace
+*.xcscmblueprint
+*.playground/timeline.xctimeline
+*.playground/Contents.xcplaygroundpage/
+*.playground/timeline.xctimeline
+*.playground/Contents.xcplaygroundpage/
+
+# Sensitive configuration files
+Keys.xcconfig

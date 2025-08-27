@@ -10,7 +10,12 @@ import Foundation
 
 final class MovieService: MovieServiceProtocol {
     
-    private let apiKey = ""
+    private let apiKey: String = {
+        guard let key = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String else {
+                fatalError("API Key not found in Info.plist")
+        }
+        return key
+    }()
     
     func fetchPopularMovies() async throws -> [Movie] {
         guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)") else {
