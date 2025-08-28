@@ -8,11 +8,11 @@
 import Foundation
 import SwiftUI
 
-final class MovieListViewModel: ObservableObject {
+final class MovieListViewModel: MovieListViewModelProtocol, ObservableObject {
     
     @Published var movies: [Movie] = []
     @Published var isLoading: Bool = false
-    @Published var erroMessage: String? = nil
+    @Published var errorMessage: String? = nil
     
     private let movieService: MovieServiceProtocol
     
@@ -23,13 +23,13 @@ final class MovieListViewModel: ObservableObject {
     @MainActor
     func fetchMovies() async {
         isLoading = true
-        erroMessage = nil
+        errorMessage = nil
         
         do {
             let fetchedMovies = try await movieService.fetchPopularMovies()
             movies = fetchedMovies
         } catch {
-            erroMessage = "Failed to fetch movies: \(error.localizedDescription)"
+            errorMessage = "Failed to fetch movies: \(error.localizedDescription)"
             print(error)
         }
         
